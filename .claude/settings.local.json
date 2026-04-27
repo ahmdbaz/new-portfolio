@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "WebFetch(domain:d215qn37qcbox3.cloudfront.net)",
+      "Bash(gh api *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(C:/Users/ahmd0/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/scripts/start-server.sh --project-dir \"C:/Users/ahmd0/Documents/new-portfolio\")"
+    ]
+  }
+}
