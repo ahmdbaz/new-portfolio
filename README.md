@@ -1,8 +1,8 @@
+### A personal portfolio hosted on AWS.
+
 Just a diffrent version of the first portfolio
 
 look for more here: https://github.com/ahmdbaz/portfolio
-
-A personal portfolio hosted on AWS.
 
 ## Live Demo
 https://d372bteboj5fl0.cloudfront.net/
