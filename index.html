@@ -1,413 +1,573 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmed Mohammed Baz — Cloud Engineer</title>
-  <meta name="description" content="Cloud Computing Engineer specializing in AWS serverless architecture and scalable infrastructure.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmed Mohammed Baz — Cloud Engineer</title>
+    <meta
+      name="description"
+      content="Cloud Computing Engineer specializing in AWS serverless architecture and scalable infrastructure."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
 
-  <div class="cursor-dot" id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
+    <canvas id="bg-canvas"></canvas>
 
-  <canvas id="bg-canvas"></canvas>
-
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <div class="nav-links" id="nav-links">
-        <a href="#about"    class="nav-link">About</a>
-        <a href="#skills"   class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact"  class="nav-link">Contact</a>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <div class="nav-links" id="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-status">
+          <span class="status-dot"></span>
+          <span>ONLINE</span>
+        </div>
+        <button
+          class="nav-burger"
+          id="nav-burger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="nav-status">
-        <span class="status-dot"></span>
-        <span>ONLINE</span>
-      </div>
-      <button class="nav-burger" id="nav-burger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-progress" id="nav-progress"></div>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#about" class="nav-mobile-link">About</a>
+      <a href="#skills" class="nav-mobile-link">Skills</a>
+      <a href="#projects" class="nav-mobile-link">Projects</a>
+      <a href="#contact" class="nav-mobile-link">Contact</a>
     </div>
-    <div class="nav-progress" id="nav-progress"></div>
-  </nav>
 
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="#about"    class="nav-mobile-link">About</a>
-    <a href="#skills"   class="nav-mobile-link">Skills</a>
-    <a href="#projects" class="nav-mobile-link">Projects</a>
-    <a href="#contact"  class="nav-mobile-link">Contact</a>
-  </div>
-
-  <main>
-
-    <!-- ── HERO ── -->
-    <section class="hero" id="hero">
-      <div class="hero-inner">
-
-        <!-- Left: copy -->
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="status-dot"></span>
-            <span>Cloud &amp; Infrastructure Engineer</span>
-          </div>
-
-          <h1 class="hero-name" id="hero-name"><span class="name-line1">Ahmed Mohammed</span><span class="name-line2">Baz</span></h1>
-
-          <p class="hero-role-line">
-            <span class="hero-role" id="hero-role"></span><span class="hero-cursor">_</span>
-          </p>
-
-          <p class="hero-bio">
-            Communication &amp; Computer Engineering graduate —
-            designing and deploying scalable systems on AWS.
-          </p>
-
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact"  class="btn btn-ghost">Contact Me</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-label">Visitors</span>
-              <span class="stat-val" id="visitor-count">—</span>
+    <main>
+      <!-- ── HERO ── -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <!-- Left: copy -->
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <span class="status-dot"></span>
+              <span>Cloud &amp; Infrastructure Engineer</span>
             </div>
-          </div>
-        </div>
 
-        <!-- Right: orbital cloud animation -->
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hv-hub">
-            <div class="hv-ring hv-ring-1"></div>
-            <div class="hv-ring hv-ring-2"></div>
-            <div class="hv-ring hv-ring-3"></div>
-            <div class="hv-core">
-              <!-- Cloud icon -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="hv-orbit hv-orbit-1"><div class="hv-pill">Lambda</div></div>
-            <div class="hv-orbit hv-orbit-2"><div class="hv-pill">S3</div></div>
-            <div class="hv-orbit hv-orbit-3"><div class="hv-pill">CloudFront</div></div>
-            <div class="hv-orbit hv-orbit-4"><div class="hv-pill">DynamoDB</div></div>
-          </div>
-        </div>
+            <h1 class="hero-name" id="hero-name">
+              <span class="name-line1">Ahmed Mohammed</span
+              ><span class="name-line2">Baz</span>
+            </h1>
 
-      </div>
-
-      <div class="hero-scroll-hint">
-        <div class="scroll-bar"></div>
-        <span>Scroll</span>
-      </div>
-    </section>
-
-    <!-- ── ABOUT ── -->
-    <section class="section about" id="about">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">01</span>
-          <h2 class="section-title">About</h2>
-        </header>
-
-        <div class="about-layout">
-
-          <!-- Left: Bio -->
-          <div class="about-left">
-            <blockquote class="about-quote reveal">
-              "I don't just deploy to the cloud — I architect it."
-            </blockquote>
-            <p class="about-body reveal">
-              With a foundation in Communication &amp; Computer Engineering, I work at the
-              intersection of networking fundamentals and modern cloud architecture. Every
-              system I deploy starts with first-principles thinking: understand the constraints,
-              design clean interfaces, automate everything.
+            <p class="hero-role-line">
+              <span class="hero-role" id="hero-role"></span
+              ><span class="hero-cursor">_</span>
             </p>
-            <p class="about-body reveal">
-              My work lives in the AWS ecosystem — serverless pipelines, event-driven
-              architectures, CDN-optimised delivery, and least-privilege IAM security
-              models that hold it all together.
+
+            <p class="hero-bio">
+              Communication &amp; Computer Engineering graduate, designing and
+              deploying scalable systems on AWS.
             </p>
-          </div>
 
-          <!-- Right: Live system metrics -->
-          <div class="about-right reveal">
-            <div class="metrics-card">
-
-              <div class="mc-header">
-                <span class="status-dot"></span>
-                <span class="mc-title">System Health</span>
-                <span class="mc-clock" id="mc-clock">--:--:--</span>
-              </div>
-
-              <div class="mc-body">
-
-                <div class="mc-row">
-                  <div class="mc-label-group">
-                    <span class="mc-label">Uptime</span>
-                    <span class="mc-val mc-accent">99.9%</span>
-                  </div>
-                  <div class="mc-track"><div class="mc-fill" style="--w:99.9%"></div></div>
-                </div>
-
-                <div class="mc-row">
-                  <div class="mc-label-group">
-                    <span class="mc-label">Cache Hit Rate</span>
-                    <span class="mc-val" id="mc-cache-val">97.4%</span>
-                  </div>
-                  <div class="mc-track"><div class="mc-fill" id="mc-cache-bar" style="--w:97.4%"></div></div>
-                </div>
-
-                <div class="mc-row">
-                  <div class="mc-label-group">
-                    <span class="mc-label">API Latency</span>
-                    <span class="mc-val" id="mc-latency">18ms</span>
-                  </div>
-                  <svg class="mc-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
-                    <polyline class="mc-spark-line" id="mc-spark-line" points=""/>
-                  </svg>
-                </div>
-
-                <div class="mc-row">
-                  <div class="mc-label-group">
-                    <span class="mc-label">Total Visitors</span>
-                    <span class="mc-val mc-accent" id="mc-visitors">—</span>
-                  </div>
-                  <span class="mc-badge">↑ LIVE</span>
-                </div>
-
-              </div>
-
-              <div class="mc-footer">
-                <span class="mc-label">CloudFront</span>
-                <div class="mc-regions">
-                  <span class="mc-region">US-E</span>
-                  <span class="mc-region">US-W</span>
-                  <span class="mc-region">EU</span>
-                  <span class="mc-region">AP</span>
-                  <span class="mc-region">SA</span>
-                </div>
-                <span class="mc-val mc-accent">Global</span>
-              </div>
-
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-ghost">Contact Me</a>
             </div>
-          </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SKILLS ── -->
-    <section class="section skills" id="skills">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">02</span>
-          <h2 class="section-title">Skills</h2>
-        </header>
-        <div class="skills-bento">
-
-          <div class="skill-tile tile-featured reveal">
-            <span class="tile-num">01</span>
-            <h3 class="tile-name">Cloud &amp; AWS</h3>
-            <div class="tile-pills">
-              <span>S3</span><span>Lambda</span><span>CloudFront</span>
-              <span>DynamoDB</span><span>API Gateway</span><span>IAM</span><span>SNS</span>
-            </div>
-          </div>
-
-          <div class="skill-tile tile-sm reveal">
-            <span class="tile-num">02</span>
-            <h3 class="tile-name">Networking</h3>
-            <div class="tile-pills">
-              <span>TCP/IP</span><span>DNS</span><span>VPC</span>
-              <span>CDN</span><span>TLS/SSL</span>
-            </div>
-          </div>
-
-          <div class="skill-tile tile-sm reveal">
-            <span class="tile-num">03</span>
-            <h3 class="tile-name">Programming</h3>
-            <div class="tile-pills">
-              <span>Python</span><span>JavaScript</span><span>Bash</span>
-              <span>REST APIs</span><span>IaC</span>
-            </div>
-          </div>
-
-          <div class="skill-tile tile-featured reveal">
-            <span class="tile-num">04</span>
-            <h3 class="tile-name">DevOps &amp; CI/CD</h3>
-            <div class="tile-pills">
-              <span>Git</span><span>GitHub Actions</span><span>Docker</span>
-              <span>Terraform</span><span>CloudFormation</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── PROJECTS ── -->
-    <section class="section projects" id="projects">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">03</span>
-          <h2 class="section-title">Projects</h2>
-        </header>
-        <div class="projects-grid">
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-status"><span class="status-dot"></span> DEPLOYED</div>
-              <span class="project-idx">01</span>
-            </div>
-            <h3 class="project-title">Cloud Portfolio Website</h3>
-            <p class="project-desc">
-              This site — fully serverless on AWS. Static assets via S3 + CloudFront,
-              real-time visitor counter via Lambda + API Gateway + DynamoDB. Zero servers to manage.
-            </p>
-            <div class="project-tech">
-              <span>S3</span><span>CloudFront</span><span>Lambda</span>
-              <span>API Gateway</span><span>DynamoDB</span>
-            </div>
-            <div class="project-links">
-              <a href="https://d215qn37qcbox3.cloudfront.net" target="_blank" rel="noopener" class="project-link">
-                Live <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-              <a href="https://github.com/ahmdbaz/portfolio" target="_blank" rel="noopener" class="project-link">
-                GitHub <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-status"><span class="status-dot"></span> DEPLOYED</div>
-              <span class="project-idx">02</span>
-            </div>
-            <h3 class="project-title">Serverless URL Shortener</h3>
-            <p class="project-desc">
-              A fully serverless URL shortening service with custom slugs, redirect tracking,
-              and link analytics — no infrastructure to provision or maintain.
-            </p>
-            <div class="project-tech">
-              <span>Lambda</span><span>API Gateway</span><span>DynamoDB</span><span>CloudFront</span>
-            </div>
-            <div class="project-links">
-              <a href="https://d2974myz1i60pw.cloudfront.net" target="_blank" rel="noopener" class="project-link">
-                Live <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-              <a href="https://github.com/ahmdbaz/aws-url-shortner" target="_blank" rel="noopener" class="project-link">
-                GitHub <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-top">
-              <div class="project-status"><span class="status-dot"></span> DEPLOYED</div>
-              <span class="project-idx">03</span>
-            </div>
-            <h3 class="project-title">Automated Image Resizer</h3>
-            <p class="project-desc">
-              Event-driven image processing pipeline. S3 upload triggers Lambda resize, outputs
-              to CloudFront CDN — with SNS notifications and IAM least-privilege security model.
-            </p>
-            <div class="project-tech">
-              <span>S3</span><span>Lambda</span><span>SNS</span><span>CloudFront</span><span>IAM</span>
-            </div>
-            <div class="project-links">
-              <a href="https://d3n4907fc1mp50.cloudfront.net" target="_blank" rel="noopener" class="project-link">
-                Live <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-              <a href="https://github.com/ahmdbaz/aws-image-resizer" target="_blank" rel="noopener" class="project-link">
-                GitHub <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CONTACT ── -->
-    <section class="section contact" id="contact">
-      <div class="container">
-        <header class="section-head reveal">
-          <span class="section-num">04</span>
-          <h2 class="section-title">Contact</h2>
-        </header>
-        <div class="contact-layout">
-
-          <!-- Left: links -->
-          <div class="contact-body">
-            <p class="contact-lead reveal">Building something interesting?<br>Let's talk.</p>
-            <div class="contact-list reveal">
-              <div class="contact-row">
-                <span class="contact-label">Email</span>
-                <span class="contact-val">ahmd20baz@gmail.com</span>
-              </div>
-              <div class="contact-row">
-                <span class="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/ahmed-mohammed-baz-7a5a743a9/" target="_blank" rel="noopener" class="btn btn-ghost contact-btn">
-                  Visit Profile
-                  <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </a>
-              </div>
-              <div class="contact-row">
-                <span class="contact-label">GitHub</span>
-                <a href="https://github.com/ahmdbaz" target="_blank" rel="noopener" class="btn btn-ghost contact-btn">
-                  View GitHub
-                  <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </a>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-label">Visitors</span>
+                <span class="stat-val" id="visitor-count">—</span>
               </div>
             </div>
           </div>
 
-          <!-- Right: signal animation -->
-          <div class="contact-visual reveal">
-            <div class="signal-hub">
-              <div class="signal-ring signal-ring-1"></div>
-              <div class="signal-ring signal-ring-2"></div>
-              <div class="signal-ring signal-ring-3"></div>
-              <div class="signal-core">
-                <!-- Paper plane / send icon -->
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Right: orbital cloud animation -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hv-hub">
+              <div class="hv-ring hv-ring-1"></div>
+              <div class="hv-ring hv-ring-2"></div>
+              <div class="hv-ring hv-ring-3"></div>
+              <div class="hv-core">
+                <!-- Cloud icon -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </div>
-              <!-- Orbiting messages -->
-              <div class="orbit orbit-1">
-                <div class="orbit-msg">Hello.</div>
+              <div class="hv-orbit hv-orbit-1">
+                <div class="hv-pill">Lambda</div>
               </div>
-              <div class="orbit orbit-2">
-                <div class="orbit-msg">Let's build.</div>
+              <div class="hv-orbit hv-orbit-2">
+                <div class="hv-pill">S3</div>
               </div>
-              <div class="orbit orbit-3">
-                <div class="orbit-msg">Available.</div>
+              <div class="hv-orbit hv-orbit-3">
+                <div class="hv-pill">CloudFront</div>
+              </div>
+              <div class="hv-orbit hv-orbit-4">
+                <div class="hv-pill">DynamoDB</div>
               </div>
             </div>
           </div>
-
         </div>
+
+        <div class="hero-scroll-hint">
+          <div class="scroll-bar"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <!-- ── ABOUT ── -->
+      <section class="section about" id="about">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="section-num">01</span>
+            <h2 class="section-title">About</h2>
+          </header>
+
+          <div class="about-layout">
+            <!-- Left: Bio -->
+            <div class="about-left">
+              <blockquote class="about-quote reveal">
+                "I don't just deploy to the cloud — I architect it."
+              </blockquote>
+              <p class="about-body reveal">
+                With a foundation in Communication &amp; Computer Engineering, I
+                work at the intersection of networking fundamentals and modern
+                cloud architecture. Every system I deploy starts with
+                first-principles thinking: understand the constraints, design
+                clean interfaces, automate everything.
+              </p>
+              <p class="about-body reveal">
+                My work lives in the AWS ecosystem — serverless pipelines,
+                event-driven architectures, CDN-optimised delivery, and
+                least-privilege IAM security models that hold it all together.
+              </p>
+            </div>
+
+            <!-- Right: Live system metrics -->
+            <div class="about-right reveal">
+              <div class="metrics-card">
+                <div class="mc-header">
+                  <span class="status-dot"></span>
+                  <span class="mc-title">System Health</span>
+                  <span class="mc-clock" id="mc-clock">--:--:--</span>
+                </div>
+
+                <div class="mc-body">
+                  <div class="mc-row">
+                    <div class="mc-label-group">
+                      <span class="mc-label">Uptime</span>
+                      <span class="mc-val mc-accent">99.9%</span>
+                    </div>
+                    <div class="mc-track">
+                      <div class="mc-fill" style="--w: 99.9%"></div>
+                    </div>
+                  </div>
+
+                  <div class="mc-row">
+                    <div class="mc-label-group">
+                      <span class="mc-label">Cache Hit Rate</span>
+                      <span class="mc-val" id="mc-cache-val">97.4%</span>
+                    </div>
+                    <div class="mc-track">
+                      <div
+                        class="mc-fill"
+                        id="mc-cache-bar"
+                        style="--w: 97.4%"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div class="mc-row">
+                    <div class="mc-label-group">
+                      <span class="mc-label">API Latency</span>
+                      <span class="mc-val" id="mc-latency">18ms</span>
+                    </div>
+                    <svg
+                      class="mc-spark"
+                      viewBox="0 0 100 28"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <polyline
+                        class="mc-spark-line"
+                        id="mc-spark-line"
+                        points=""
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="mc-row">
+                    <div class="mc-label-group">
+                      <span class="mc-label">Total Visitors</span>
+                      <span class="mc-val mc-accent" id="mc-visitors">—</span>
+                    </div>
+                    <span class="mc-badge">↑ LIVE</span>
+                  </div>
+                </div>
+
+                <div class="mc-footer">
+                  <span class="mc-label">CloudFront</span>
+                  <div class="mc-regions">
+                    <span class="mc-region">US-E</span>
+                    <span class="mc-region">US-W</span>
+                    <span class="mc-region">EU</span>
+                    <span class="mc-region">AP</span>
+                    <span class="mc-region">SA</span>
+                  </div>
+                  <span class="mc-val mc-accent">Global</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SKILLS ── -->
+      <section class="section skills" id="skills">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="section-num">02</span>
+            <h2 class="section-title">Skills</h2>
+          </header>
+          <div class="skills-bento">
+            <div class="skill-tile tile-featured reveal">
+              <span class="tile-num">01</span>
+              <h3 class="tile-name">Cloud &amp; AWS</h3>
+              <div class="tile-pills">
+                <span>S3</span><span>Lambda</span><span>CloudFront</span>
+                <span>DynamoDB</span><span>API Gateway</span><span>IAM</span
+                ><span>SNS</span>
+              </div>
+            </div>
+
+            <div class="skill-tile tile-sm reveal">
+              <span class="tile-num">02</span>
+              <h3 class="tile-name">Networking</h3>
+              <div class="tile-pills">
+                <span>TCP/IP</span><span>DNS</span><span>VPC</span>
+                <span>CDN</span><span>TLS/SSL</span>
+              </div>
+            </div>
+
+            <div class="skill-tile tile-sm reveal">
+              <span class="tile-num">03</span>
+              <h3 class="tile-name">Programming</h3>
+              <div class="tile-pills">
+                <span>Python</span><span>JavaScript</span><span>Bash</span>
+                <span>REST APIs</span><span>IaC</span>
+              </div>
+            </div>
+
+            <div class="skill-tile tile-featured reveal">
+              <span class="tile-num">04</span>
+              <h3 class="tile-name">DevOps &amp; CI/CD</h3>
+              <div class="tile-pills">
+                <span>Git</span><span>GitHub Actions</span><span>Docker</span>
+                <span>Terraform</span><span>CloudFormation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PROJECTS ── -->
+      <section class="section projects" id="projects">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="section-num">03</span>
+            <h2 class="section-title">Projects</h2>
+          </header>
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-top">
+                <div class="project-status">
+                  <span class="status-dot"></span> DEPLOYED
+                </div>
+                <span class="project-idx">01</span>
+              </div>
+              <h3 class="project-title">Cloud Portfolio Website</h3>
+              <p class="project-desc">
+                This site — fully serverless on AWS. Static assets via S3 +
+                CloudFront, real-time visitor counter via Lambda + API Gateway +
+                DynamoDB. Zero servers to manage.
+              </p>
+              <div class="project-tech">
+                <span>S3</span><span>CloudFront</span><span>Lambda</span>
+                <span>API Gateway</span><span>DynamoDB</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://d215qn37qcbox3.cloudfront.net"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  Live
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/ahmdbaz/portfolio"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  GitHub
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-top">
+                <div class="project-status">
+                  <span class="status-dot"></span> DEPLOYED
+                </div>
+                <span class="project-idx">02</span>
+              </div>
+              <h3 class="project-title">Serverless URL Shortener</h3>
+              <p class="project-desc">
+                A fully serverless URL shortening service with custom slugs,
+                redirect tracking, and link analytics — no infrastructure to
+                provision or maintain.
+              </p>
+              <div class="project-tech">
+                <span>Lambda</span><span>API Gateway</span><span>DynamoDB</span
+                ><span>CloudFront</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://d2974myz1i60pw.cloudfront.net"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  Live
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/ahmdbaz/aws-url-shortner"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  GitHub
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-top">
+                <div class="project-status">
+                  <span class="status-dot"></span> DEPLOYED
+                </div>
+                <span class="project-idx">03</span>
+              </div>
+              <h3 class="project-title">Automated Image Resizer</h3>
+              <p class="project-desc">
+                Event-driven image processing pipeline. S3 upload triggers
+                Lambda resize, outputs to CloudFront CDN — with SNS
+                notifications and IAM least-privilege security model.
+              </p>
+              <div class="project-tech">
+                <span>S3</span><span>Lambda</span><span>SNS</span
+                ><span>CloudFront</span><span>IAM</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://d3n4907fc1mp50.cloudfront.net"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  Live
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/ahmdbaz/aws-image-resizer"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-link"
+                >
+                  GitHub
+                  <svg width="10" height="10" viewBox="0 0 10 10">
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CONTACT ── -->
+      <section class="section contact" id="contact">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="section-num">04</span>
+            <h2 class="section-title">Contact</h2>
+          </header>
+          <div class="contact-layout">
+            <!-- Left: links -->
+            <div class="contact-body">
+              <p class="contact-lead reveal">
+                Building something interesting?<br />Let's talk.
+              </p>
+              <div class="contact-list reveal">
+                <div class="contact-row">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-val">ahmd20baz@gmail.com</span>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-label">LinkedIn</span>
+                  <a
+                    href="https://www.linkedin.com/in/ahmed-mohammed-baz-7a5a743a9/"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-ghost contact-btn"
+                  >
+                    Visit Profile
+                    <svg width="10" height="10" viewBox="0 0 10 10">
+                      <path
+                        d="M1 9L9 1M9 1H3M9 1V7"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-label">GitHub</span>
+                  <a
+                    href="https://github.com/ahmdbaz"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-ghost contact-btn"
+                  >
+                    View GitHub
+                    <svg width="10" height="10" viewBox="0 0 10 10">
+                      <path
+                        d="M1 9L9 1M9 1H3M9 1V7"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: signal animation -->
+            <div class="contact-visual reveal">
+              <div class="signal-hub">
+                <div class="signal-ring signal-ring-1"></div>
+                <div class="signal-ring signal-ring-2"></div>
+                <div class="signal-ring signal-ring-3"></div>
+                <div class="signal-core">
+                  <!-- Paper plane / send icon -->
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M22 2L11 13"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 2L15 22L11 13L2 9L22 2Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <!-- Orbiting messages -->
+                <div class="orbit orbit-1">
+                  <div class="orbit-msg">Hello.</div>
+                </div>
+                <div class="orbit orbit-2">
+                  <div class="orbit-msg">Let's build.</div>
+                </div>
+                <div class="orbit orbit-3">
+                  <div class="orbit-msg">Available.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>Ahmed Mohammed Baz — <span id="footer-year"></span></span>
+        <span class="footer-note"
+          >Designed &amp; built from scratch · Hosted on AWS</span
+        >
       </div>
-    </section>
+    </footer>
 
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>Ahmed Mohammed Baz — <span id="footer-year"></span></span>
-      <span class="footer-note">Designed &amp; built from scratch · Hosted on AWS</span>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
